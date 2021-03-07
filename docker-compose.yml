@@ -4,16 +4,15 @@ services:
     container_name: bookvalleswp-db
     image: mariadb:10
     restart: unless-stopped
-    ports: [3260:3260]
     env_file: .env_db
-    volumes:
-      - 
+    ports: [3260:3260]
+    volumes: ['/var/lib/mysql/bookvalleswp:/var/lib/mysql']
 
   bookvalleswp:
-    container_name: bookvalleswp:5
-    image: wordpress:10
+    container_name: bookvalleswp
+    image: wordpress:5
     restart: unless-stopped
-    ports: [81:80]
     env_file: .env_wp
-    volumes:
-      - 
+    ports: [81:80]
+    volumes: []
+    depends_on: ['bookvalleswp-db']
