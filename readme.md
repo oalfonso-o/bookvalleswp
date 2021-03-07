@@ -1,0 +1,1 @@
+# WP Docker setup for BookValles project

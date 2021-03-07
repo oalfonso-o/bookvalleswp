@@ -1,0 +1,19 @@
+version: '3'
+services:
+  bookvalleswp-db:
+    container_name: bookvalleswp-db
+    image: mariadb:10
+    restart: unless-stopped
+    ports: [3260:3260]
+    env_file: .env_db
+    volumes:
+      - 
+
+  bookvalleswp:
+    container_name: bookvalleswp:5
+    image: wordpress:10
+    restart: unless-stopped
+    ports: [81:80]
+    env_file: .env_wp
+    volumes:
+      - 
